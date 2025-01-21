@@ -3,11 +3,7 @@ app.controller('AuthController', [
   '$state',
   'dbService', 
   function($scope, $state, dbService) {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
-    if (loggedInUser) {
-      $state.go('game');
-      return;
-    }
+  
     
 
     $scope.signup = async function(user) {
@@ -35,8 +31,9 @@ app.controller('AuthController', [
         };
 
         await dbService.addUser(db, newUser);
-        alert('Sign-Up Successful! You can now log in.');
-        $state.go('signin');
+        localStorage.setItem('loggedInUser', JSON.stringify(user.username));
+
+        $state.go('game');
 
       } catch (error) {
         console.error('Error during sign-up:', error);

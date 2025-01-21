@@ -118,31 +118,37 @@ app.controller('GameController', [
     }
     
     
-
     $scope.updateBestScore = async function (newMoves, newTime) {
-      if (
-        !$scope.bestScore ||
-        typeof $scope.bestScore.moves === "undefined" ||
-        typeof $scope.bestScore.time === "undefined"
-      ) {
-        $scope.bestScore = { moves: Infinity, time: Infinity };
+      if (!$scope.bestScore || typeof $scope.bestScore.moves === "undefined" || typeof $scope.bestScore.time === "undefined") {
+          console.log(`⚠️ No Best Score Found. Initializing to Infinity.`);
+          $scope.bestScore = { moves: Infinity, time: Infinity };
       }
-      if (
-        newMoves < $scope.bestScore.moves ||
-        (newMoves === $scope.bestScore.moves || newTime < $scope.bestScore.time)
-      ) {
-        $scope.bestScore.moves = newMoves;
-        $scope.bestScore.time = newTime;
-        try {
-          await dbService.saveBestScoreToIDB(loggedInUser, $scope.bestScore); 
-          console.log("Saved bestScore to IDB:", $scope.bestScore);
-        } catch (err) {
-          console.error("Failed to save bestScore:", err);
-        }
+  
+      console.log(`🔍 Comparing Scores | New Moves: ${newMoves}, Current Best Moves: ${$scope.bestScore.moves}`);
+      console.log(`🔍 Comparing Times | New Time: ${newTime}, Current Best Time: ${$scope.bestScore.time}`);
+  
+      const isInitialBestScore = $scope.bestScore.moves === 0 && $scope.bestScore.time === 0;
+  
+      if (isInitialBestScore || newMoves < $scope.bestScore.moves || (newMoves === $scope.bestScore.moves && newTime < $scope.bestScore.time)) {
+          console.log(`🆕 New Best Score Detected. Updating IndexedDB.`);
+          $scope.bestScore = { moves: newMoves, time: newTime };
+  
+          try {
+              await dbService.saveBestScoreToIDB(loggedInUser, $scope.bestScore);
+              console.log(`Best Score Updated in IndexedDB:`, $scope.bestScore);
+          } catch (err) {
+              console.error(`Failed to Save Best Score:`, err);
+          }
+      } else {
+          console.log(`New Score is Worse. Keeping Existing Best Score.`);
       }
+  
       $scope.displayBestScore();
       $scope.restartGame();
-    };
+  };
+  
+  
+  
 
     $scope.restartGame = function () {
       $scope.stopTimer();
@@ -170,19 +176,32 @@ app.controller('GameController', [
 
     $scope.initGame = function () {
       dbService.openIndexedDB()
-        .then(async (db) => {
-          const userRecord = await dbService.getUserRecord(db, loggedInUser);
-          if (userRecord && userRecord.bestScore) {
-            $scope.bestScore = userRecord.bestScore;
-          }
-          $scope.generateCardGrid();
-          $scope.startTimer();
-          $scope.displayBestScore();
-        })
-        .catch(err => {
-          console.error("Error opening DB:", err);
-        });
-    };
+          .then(async (db) => {
+              const userRecord = await dbService.getUserRecord(db, loggedInUser);
+              if (userRecord && userRecord.bestScore) {
+                  console.log(`🎯 Retrieved Best Score from IndexedDB:`, userRecord.bestScore);
+  
+                  if (userRecord.bestScore.moves === 0 && userRecord.bestScore.time === 0) {
+                      console.log(`⚠️ Found Initial 0 Values. Setting Best Score to Infinity.`);
+                      $scope.bestScore = { moves: Infinity, time: Infinity };
+                  } else {
+                      $scope.bestScore = userRecord.bestScore;
+                  }
+              } else {
+                  console.log(`⚠️ No Best Score Found. Setting Default.`);
+                  $scope.bestScore = { moves: Infinity, time: Infinity };
+              }
+  
+              $scope.generateCardGrid();
+              $scope.startTimer();
+              $scope.displayBestScore();
+          })
+          .catch(err => {
+              console.error(`❌ Error Opening IndexedDB:`, err);
+          });
+  };
+  
+  
 
     $scope.initGame();
 
