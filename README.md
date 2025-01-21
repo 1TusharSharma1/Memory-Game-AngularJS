@@ -27,24 +27,35 @@ A modern and responsive memory matching game built with AngularJS, IndexedDB, an
 
 ## 📂 Project Structure
 
-📁 **Memory-Game-AngularJS**  
- ┣ 📂 **views**  
- ┃ ┣ 📄 landingPage.html  
- ┃ ┣ 📄 signup.html  
- ┃ ┣ 📄 signin.html  
- ┃ ┣ 📄 game.html  
- ┃ ┗ 📄 dashboard.html  
- ┣ 📂 **scripts**  
- ┃ ┣ 📄 app.js  
- ┃ ┣ 📄 gameController.js  
- ┃ ┣ 📄 authController.js  
- ┃ ┣ 📄 dashboardController.js  
- ┃ ┗ 📄 dbService.js  
- ┣ 📂 **styles**  
- ┃ ┣ 📄 game.css  
- ┃ ┣ 📄 dashboard.css  
- ┃ ┗ 📄 index.html  
- ┗ 📄 **README.md**  
+📦 **Memory-Game-AngularJS**
+ ┣ 📂 **controllers**
+ ┃ ┣ 📜 authController.js
+ ┃ ┣ 📜 dashboardController.js
+ ┃ ┣ 📜 gameController.js
+ ┃ ┗ 📜 landingPageController.js
+ ┣ 📂 **services**
+ ┃ ┣ 📜 authService.js
+ ┃ ┣ 📜 dbService.js
+ ┃ ┗ 📜 gameService.js
+ ┣ 📂 **styles**
+ ┃ ┣ 🎨 dashboard.css
+ ┃ ┣ 🎨 game.css
+ ┃ ┣ 🎨 landingPage.css
+ ┃ ┣ 🎨 signIn.css
+ ┃ ┗ 🎨 signUp.css
+ ┣ 📂 **views**
+ ┃ ┣ 📝 dashboard.html
+ ┃ ┣ 📝 game.html
+ ┃ ┣ 📝 landingPage.html
+ ┃ ┣ 📝 signin.html
+ ┃ ┗ 📝 signup.html
+ ┣ 📜 **.gitignore**
+ ┣ 📜 **app.js**
+ ┣ 📜 **index.html**
+ ┣ 📜 **package-lock.json**
+ ┣ 📜 **package.json**
+ ┗ 📜 **README.md**
+
 
 ---
 
