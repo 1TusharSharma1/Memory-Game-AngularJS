@@ -24,39 +24,38 @@ A modern and responsive memory matching game built with AngularJS, IndexedDB, an
 🔹 **CryptoJS** – Secure password hashing.  
 
 ---
-
 ## 📂 Project Structure
 
-📦 **Memory-Game-AngularJS**
- ┣ 📂 **controllers**
+```
+📦 Memory-Game-AngularJS
+ ┣ 📂 controllers
  ┃ ┣ 📜 authController.js
  ┃ ┣ 📜 dashboardController.js
  ┃ ┣ 📜 gameController.js
  ┃ ┗ 📜 landingPageController.js
- ┣ 📂 **services**
+ ┣ 📂 services
  ┃ ┣ 📜 authService.js
  ┃ ┣ 📜 dbService.js
  ┃ ┗ 📜 gameService.js
- ┣ 📂 **styles**
+ ┣ 📂 styles
  ┃ ┣ 🎨 dashboard.css
  ┃ ┣ 🎨 game.css
  ┃ ┣ 🎨 landingPage.css
  ┃ ┣ 🎨 signIn.css
  ┃ ┗ 🎨 signUp.css
- ┣ 📂 **views**
+ ┣ 📂 views
  ┃ ┣ 📝 dashboard.html
  ┃ ┣ 📝 game.html
  ┃ ┣ 📝 landingPage.html
  ┃ ┣ 📝 signin.html
  ┃ ┗ 📝 signup.html
- ┣ 📜 **.gitignore**
- ┣ 📜 **app.js**
- ┣ 📜 **index.html**
- ┣ 📜 **package-lock.json**
- ┣ 📜 **package.json**
- ┗ 📜 **README.md**
-
-
+ ┣ 📜 .gitignore
+ ┣ 📜 app.js
+ ┣ 📜 index.html
+ ┣ 📜 package-lock.json
+ ┣ 📜 package.json
+ ┗ 📜 README.md
+```
 ---
 
 ## 🎯 How to Play
