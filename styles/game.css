@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b40);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .btn-dashboard {
+    position: absolute;
+    bottom: 20px;  /* 20px above the container's bottom */
+    left: 20px;    /* 20px from the container's left side */
+    background: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;            /* ensures it doesn't stretch full width */
+    display: inline-block;  /* typical for a button */
+    z-index: 999;           /* ensure it's on top if needed */
+  }
+  
+  .btn-dashboard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  .container {
+    position: relative;
+    margin:30px;
+    width: 900px;
+    height: 800px;
+    padding: 20px;
+    background: #2c2c3e;
+    padding-bottom: 80px; 
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    text-align: center;
+  }
+  
+  .game-header h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .stats p {
+    font-size: 14px;
+    color: #bdbdbd;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  .btn-danger {
+    background: #ff6b6b;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background: #e63946;
+  }
+  
+  .btn-confirm {
+    background: #28a745;
+    color: white;
+  }
+  
+  .btn-cancel {
+    background: #6c757d;
+    color: white;
+  }
+  
+
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .card {
+    background: #1e1e2f;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.3s;
+  }
+  
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card.matched {
+    background: #29a245;
+    cursor: default;
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  
+  .card-front {
+    transform: rotateY(0deg);
+    
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2c2c3e;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    z-index: 20;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .modal-button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

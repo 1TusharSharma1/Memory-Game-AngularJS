@@ -1,0 +1,24 @@
+<div id="dashboard-container" ng-controller="dashboardController">
+  <header id="dashboard-header">
+    <h1 class="dashboard-title">Score History</h1>
+    <p class="dashboard-subtitle">
+      Here’s how your game scores have changed over time. Keep playing to improve!
+    </p>
+  </header>
+
+  <section id="dashboard-main">
+    <div id="chart-container">
+      <canvas id="scoreChart"></canvas>
+    </div>
+    <button class="dashboard-btn back-to-game" ng-click="goBackToGame()">Back to Game</button>
+  </section>
+
+  <div class="overlay" ng-show="isModalVisible"></div>
+  <div class="modal" ng-show="isModalVisible">
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-buttons">
+      <button class="btn btn-confirm" ng-click="confirmLogout()">Yes</button>
+      <button class="btn btn-cancel" ng-click="cancelLogout()">No</button>
+    </div>
+  </div>
+</div>

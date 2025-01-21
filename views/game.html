@@ -1,0 +1,42 @@
+<div class="container" ng-controller="GameController">
+  <header class="game-header">
+    <h1>Memory Matching Game</h1>
+
+    <div class="stats">
+      <p>Moves: <span>{{ moves }}</span></p>
+      <p>Time: <span>{{ timer }}</span></p>
+      <p>Best Score: <span>{{ bestScoreDisplay }}</span></p>
+    </div>
+
+    <button class="btn" ng-click="restartGame()">Restart</button>
+    <button class="btn btn-danger" ng-click="showLogoutModal()">Logout</button>
+  </header>
+
+  <main>
+    <div class="game-board">
+      <div
+        class="card"
+        ng-repeat="card in cards track by $index"
+        ng-click="flipCard(card)"
+        ng-class="{ 'flipped': card.flipped, 'matched': card.matched }"
+      >
+        <div class="card-front"></div>
+        <div class="card-back">{{card.symbol}}</div>
+      </div>
+    </div>
+  </main>
+
+  <div class="overlay" ng-show="isModalVisible"></div>
+  <div class="modal" ng-show="isModalVisible">
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-buttons">
+      <button class="btn btn-confirm" ng-click="confirmLogout()">Yes</button>
+      <button class="btn btn-cancel" ng-click="cancelLogout()">No</button>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-dashboard" ng-click="goToDashboard()">
+  Go to Dashboard
+</button>
+

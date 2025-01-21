@@ -1,0 +1,110 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg rounded">
+          <div class="card-header bg-primary text-white text-center">
+            <h2>Sign Up</h2>
+          </div>
+        </div>
+          <div class="card-body">
+            <form name="signupForm" ng-submit="signup(user)" novalidate>
+              <div class="form-group">
+                <label for="email" class="font-weight-bold">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control rounded-pill"
+                  ng-model="user.email"
+                  name="email"
+                  placeholder="Enter your email"
+                  ng-required
+                />
+                <small
+                  class="text-danger"
+                  ng-show="signupForm.email.$dirty && signupForm.email.$invalid"
+                >
+                  A valid email is required.
+                </small>
+              </div>
+  
+              <div class="form-group">
+                <label for="username" class="font-weight-bold">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control rounded-pill"
+                  ng-model="user.username"
+                  name="username"
+                  placeholder="Choose a username"
+                  ng-trim
+                  ng-required="true"
+                  minlength="3"
+                />
+                <small
+                  class="text-danger"
+                  ng-show="signupForm.username.$touched && signupForm.username.$error.minlength"
+                >
+                  Username must be at least 3 characters long.
+                </small>
+              </div>
+  
+              <div class="form-group">
+                <label for="password" class="font-weight-bold">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control rounded-pill"
+                  ng-model="user.password"
+                  name="password"
+                  placeholder="Enter a strong password"
+                  ng-required
+                  ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/"
+                />
+                <small
+                  class="text-danger"
+                  ng-show="signupForm.password.$dirty && signupForm.password.$error.pattern"
+                >
+                  Password must include at least 8 characters, one uppercase letter, one
+                  number, and one special character.
+                </small>
+              </div>
+  
+
+              <div class="form-group">
+                <label for="confirmPassword" class="font-weight-bold">Confirm Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  class="form-control rounded-pill"
+                  ng-model="user.confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm your password"
+                  ng-required
+                />
+                <small
+                  class="text-danger"
+                  ng-show="user.password !== user.confirmPassword && signupForm.confirmPassword.$dirty"
+                >
+                  Passwords do not match.
+                </small>
+              </div>
+  
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block rounded-pill"
+                  ng-disabled="signupForm.$invalid || user.password !== user.confirmPassword"
+                >
+                  Sign Up
+                </button>
+              </div>
+              <br>
+              <small style="cursor: pointer;" ui-sref="signin">Go to Sign In</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

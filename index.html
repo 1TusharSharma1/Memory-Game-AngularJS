@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/landingPageController.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="services/dbService.js"></script>
+    <script src="services/gameService.js"></script>
+    <script src="controllers/authController.js"></script>
+    <script src="controllers/dashboardController.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="controllers/gameController.js"></script>
+    <link rel="stylesheet" href="./styles/signIn.css">
+    <link rel="stylesheet" href="./styles/signUp.css">
+    <link rel="stylesheet" href="./styles/game.css">
+    <link rel="stylesheet" href="./styles/landingPage.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+</head>
+<body>
+    
+    <div ui-view></div>
+
+</body>
+</html>
